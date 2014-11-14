@@ -92,11 +92,10 @@ class AuthServiceProxy(object):
             self.__conn = connection
         elif self.__url.scheme == 'https':
             self.__conn = httplib.HTTPSConnection(self.__url.hostname, port,
-                                                  None, None, False,
+                                                  None, None,
                                                   timeout)
         else:
-            self.__conn = httplib.HTTPConnection(self.__url.hostname, port,
-                                                 False, timeout)
+            self.__conn = httplib.HTTPConnection(self.__url.hostname, port, timeout)
 
     def __getattr__(self, name):
         if name.startswith('__') and name.endswith('__'):
